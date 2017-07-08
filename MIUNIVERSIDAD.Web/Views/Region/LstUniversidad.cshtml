@@ -1,0 +1,99 @@
+﻿@model  MIUNIVERSIDAD.Web.ViewModel.LstUniversidadViewModel
+@{
+    ViewBag.Title = "Lista de Universidad";
+    int numero = 0;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListUniversidad)
+                {
+                    numero++;
+                    <tr>
+                        <td>@item.nombreuniversidad</td>
+                        <td>@item.nombrecomercial</td>
+                        <td>@item.tipouniversidad</td>
+                        <td>@item.ruc</td>
+                        <td>@item.direccion</td>
+                        <td>@item.localizacion</td>
+                        <td>
+                            <a class="btn btn-default"
+                               href="@Url.Action("AddEditUniversidad",
+                                        new { iduniversidad = item.iduniversidad })">
+                                <i class="fa fa-pencil"></i>&nbsp;Editar
+                            </a>
+                        </td>
+                        <td>
+
+                            <button class="btn bg-red waves-effect" style="height: 20px; font-size:11px" onclick="ConfirmDemo(@numero)">
+                                Eliminar
+                            </button>
+                            <a href="@Url.Action("DeleteUniversidad",  new { iduniversidad = item.iduniversidad })" style="display:none" id="@numero"></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="@Url.Action("AddEditUniversidad")">
+            <i class="fa fa-plus"></i>&nbsp;Agregar
+        </a>
+    </div>
+</div>
+@*<a onclick="ConfirmDemo()" />Presiona acá</a>*@
+<!-- #END# Exportable Table -->
+<!-- Jquery Core Js -->
+<script src="@Url.Content("~/Content/plugins/jquery/jquery.min.js")"></script>
+<!-- Bootstrap Core Js -->
+<script src="@Url.Content("~/Content/plugins/bootstrap/js/bootstrap.js")"></script>
+<!-- Select Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/bootstrap-select/js/bootstrap-select.js")"></script>
+<!-- Slimscroll Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/jquery-slimscroll/jquery.slimscroll.js")"></script>
+<!-- Bootstrap Notify Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/bootstrap-notify/bootstrap-notify.js")"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/node-waves/waves.js")"></script>
+<!-- SweetAlert Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/sweetalert/sweetalert.min.js")"></script>
+<!-- Jquery DataTable Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/jquery-datatable/jquery.dataTables.js")"></script>
+<script src="@Url.Content("~/Content/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")"></script>
+<script src="@Url.Content("~/Content/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js")"></script>
+<script src="@Url.Content("~/Content/plugins/jquery-datatable/extensions/export/buttons.flash.min.js")"></script>
+<script src="@Url.Content("~/Content/plugins/jquery-datatable/extensions/export/jszip.min.js")"></script>
+<script src="@Url.Content("~/Content/plugins/jquery-datatable/extensions/export/pdfmake.min.js")"></script>
+<script src="@Url.Content("~/Content/plugins/jquery-datatable/extensions/export/vfs_fonts.js")"></script>
+<script src="@Url.Content("~/Content/plugins/jquery-datatable/extensions/export/buttons.html5.min.js")"></script>
+<script src="@Url.Content("~/Content/plugins/jquery-datatable/extensions/export/buttons.print.min.js")"></script>
+<!-- Custom Js -->
+<script src="@Url.Content("~/Content/js/admin.js")"></script>
+<script src="@Url.Content("~/Content/js/pages/tables/jquery-datatable.js")"></script>
+<script src="@Url.Content("~/Content/js/pages/ui/dialogs.js")"></script>
+<!-- Demo Js -->
+<script src="@Url.Content("~/Content/js/demo.js")"></script>
+<script type="text/javascript">
+    function ConfirmDemo(n) {
+        swal({
+            title: "Esta seguro de eliminar?",
+            text: "Ya no volvera a ver este registro",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, deseo eliminar!",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        }, function () {
+            swal("Eliminado!", "El registro se elimino con exito.", "success");
+            location = $(this).attr("href")
+            location = document.getElementById(n).href;
+        });
+    }
+</script>

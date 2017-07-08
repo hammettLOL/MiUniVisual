@@ -1,0 +1,102 @@
+﻿@model MIUNIVERSIDAD.Web.ViewModel.AddEditUniversidadViewModel
+@{
+    ViewBag.Title = "Universidad";
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <form role="form" action="@Url.Action("AddEditUniversidad")" method="post">
+            @if (TempData["MensajeError"] != null && !String.IsNullOrEmpty(TempData["MensajeError"].ToString()))
+            {
+                String strCssTipo = TempData["Tipo"].ToString() == "ERROR" ? "danger" : "Success";
+                <div class="aler alert-@strCssTipo alert-dismissable">
+                    @TempData["MensajeError"].ToString()
+                </div><br />
+            }
+            @Html.HiddenFor(x => x.iduniversidad)
+            <div class="form-group">
+                <label>Nombre de Universidad</label>
+                <div class="form-line">
+                    @Html.TextBoxFor(x => x.nombreuniversidad, new { @Class = "form-control", @id = "nombreuniversidad", @type = "text", @placeholder = "Ej: Universidad Peruana de Ciencias Aplicadas" })
+                    @*<input class="form-control" name="Nombre">*@
+                    </div>
+                @Html.ValidationMessageFor(x => x.nombreuniversidad, "", new { @class = "text-danger" })
+                </div>
+            <div class="form-group">
+                <label>Nombre Comercial</label>
+                <div class="form-line">
+                    @Html.TextBoxFor(x => x.nombrecomercial, new { @Class = "form-control", @id = "nombrecomercial", @type = "text", @placeholder = "Ej: UPC" })
+                    @*<input class="form-control" name="Victima">*@
+                </div>
+                @Html.ValidationMessageFor(x => x.nombrecomercial, "", new { @class = "text-danger" })
+                </div>
+            <div class="form-group">
+                <label>Tipo de Universidad</label>
+                <div class="form-line">
+                    @Html.TextBoxFor(x => x.tipouniversidad, new { @Class = "form-control", @id = "tipouniversidad", @type = "text", @placeholder = "Ej: Particular" })
+                    @*<input class="form-control" name="Fecha">*@
+                </div>
+                @Html.ValidationMessageFor(x => x.tipouniversidad, "", new { @class = "text-danger" })
+                </div>
+            <div class="form-group">
+                <label>RUC</label>
+                <div class="form-line">
+                    @Html.TextBoxFor(x => x.ruc, new { @Class = "form-control", @id = "ruc", @type = "text", @placeholder = "Ej: 123456789" })
+                </div>
+                @Html.ValidationMessageFor(x => x.ruc, "", new { @class = "text-danger" })
+                </div>
+            <div class="form-group">
+                <label>Direccion</label>
+                <div class="form-line">
+                    @Html.TextBoxFor(x => x.direccion, new { @Class = "form-control", @id = "Direccion", @type = "text", @placeholder = "Ej: Av. Molina 123" })
+                </div>
+                @Html.ValidationMessageFor(x => x.direccion, "", new { @class = "text-danger" })
+                </div>
+            <div class="form-group">
+                <label>Localizacion</label>
+                <div class="form-line">
+                    @Html.TextBoxFor(x => x.localizacion, new { @Class = "form-control", @id = "localizacion", @type = "text", @placeholder = "Ej: Urbana" })
+                </div>
+                @Html.ValidationMessageFor(x => x.tipouniversidad, "", new { @class = "text-danger" })
+                </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-save"></i>&nbsp;Guardar
+            </button>
+        </form>
+    </div>
+</div>
+<!-- Vertical Layout | With Floating Label -->
+
+<script src="@Url.Content("~/Content/plugins/jquery/jquery.min.js")"></script>
+<!-- Bootstrap Core Js -->
+<script src="@Url.Content("~/Content/plugins/bootstrap/js/bootstrap.js")"></script>
+<!-- Select Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/bootstrap-select/js/bootstrap-select.js")"></script>
+<!-- Slimscroll Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/jquery-slimscroll/jquery.slimscroll.js")"></script>
+<!-- Dropzone Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/dropzone/dropzone.js")"></script>
+<!-- Input Mask Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/jquery-inputmask/jquery.inputmask.bundle.js")"></script>
+<!-- Multi Select Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/multi-select/js/jquery.multi-select.js")"></script>
+<!-- Jquery Spinner Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/jquery-spinner/js/jquery.spinner.js")"></script>
+<!-- Bootstrap Tags Input Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js")"></script>
+<!-- noUISlider Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/nouislider/nouislider.js")"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="@Url.Content("~/Content/plugins/node-waves/waves.js")"></script>
+<!-- Custom Js -->
+<script src="@Url.Content("~/Content/js/admin.js")"></script>
+
+<!-- Demo Js -->
+<script src="@Url.Content("~/Content/js/demo.js")"></script>
+
+
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
